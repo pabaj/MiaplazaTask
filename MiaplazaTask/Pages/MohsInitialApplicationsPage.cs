@@ -35,7 +35,7 @@ namespace MiaplazaTask.Pages
 
         IWebElement StartDateCalender => driver.FindElement(By.CssSelector("table[class='ui-datepicker-calendar']"));
 
-        IWebElement NextCalender => driver.FindElement(By.CssSelector("table[class='ui-datepicker-calendar']"));
+        IWebElement NextCalender => driver.FindElement(By.CssSelector("div[id='ui-datepicker-div']>div>a+a"));
 
         IWebElement StartingDate => driver.FindElement(By.CssSelector("table[class='ui-datepicker-calendar'] > tbody>tr:nth-child(3)>td+td>a"));
 
@@ -44,6 +44,8 @@ namespace MiaplazaTask.Pages
         //Page Objects Student information Section 
 
         IWebElement StudentInfoHeader => driver.FindElement(By.CssSelector("li[id='Section3-li']>h2>div>b"));
+
+
 
         public void FillParentFirstName(string firstName)
         {
@@ -89,8 +91,6 @@ namespace MiaplazaTask.Pages
         {
             Actions actions = new Actions(driver);
             actions.MoveToElement(NextStep).Click().Build().Perform();
-        
-         
 
         }
 

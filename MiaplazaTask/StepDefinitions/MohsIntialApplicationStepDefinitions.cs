@@ -10,18 +10,18 @@ namespace MiaplazaTask.StepDefinitions
     public sealed class MohsIntialApplicationStepDefinitions
     {
 
-        private IWebDriver driver;
+
+        IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>("webDriver");
+
         MiacademyLandingPage landingPage;
         OnlineHighSchoolPage onlineSchoolPage;
         MohsInitialApplicationsPage initialApplicationsPage;
 
-
         [Given(@"Navigate to Miacademy page")]
         public void GivenNavigateToMiacademyPage()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
+            //open the web broweser and navigate to application
+
             driver.Navigate().GoToUrl("https://miacademy.co/#/");
             
         }
@@ -29,8 +29,12 @@ namespace MiaplazaTask.StepDefinitions
         [When(@"Navigate to online high school and apply to school")]
         public void WhenNavigateToOnlineHighSchoolAndApplyToSchool()
         {
+            //Navigate to online school page 
+
             landingPage = new MiacademyLandingPage(driver);
             landingPage.ClickMiacademyLink();
+
+            //Apply for online school 
             onlineSchoolPage = new OnlineHighSchoolPage(driver);
             onlineSchoolPage.ClickApplyToOurSchoolLink();
 
@@ -45,6 +49,7 @@ namespace MiaplazaTask.StepDefinitions
     {
             ParentDetials parentInfo =  table.CreateInstance<ParentDetials>();
 
+            // Fill out parent detials 
             initialApplicationsPage = new MohsInitialApplicationsPage(driver);
             initialApplicationsPage.FillParentFirstName(parentInfo.FirstName);
             initialApplicationsPage.FillParentLastName(parentInfo.LastName);
@@ -53,6 +58,8 @@ namespace MiaplazaTask.StepDefinitions
             initialApplicationsPage.SelectNoFillSecondParentGuardian("No");
             initialApplicationsPage.CheckFacebbokInstagramOption();
             initialApplicationsPage.SelectStartDate();
+
+            //Navigate to Student information page
             initialApplicationsPage.ClickParentPAgeNextButton();
         }
 
@@ -61,8 +68,11 @@ namespace MiaplazaTask.StepDefinitions
         public void ThenVerifyUserNavigateToStudentInformationPage()
         {
             initialApplicationsPage = new MohsInitialApplicationsPage(driver);
+
+            //Verify the student information page header 
             Assert.AreEqual("Student Information", initialApplicationsPage.GetStudentInformationHeader());
-            driver.Quit();
+
+        
 
         }
 

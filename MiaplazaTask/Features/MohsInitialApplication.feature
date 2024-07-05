@@ -1,6 +1,6 @@
 ﻿Feature: MOHS IntialApplication
 
-A short summary of the feature
+Sceanrios related to the MOHS Application filling and submitting.
 
 @MOHSInitialApplication
 Scenario: User Fill out Parent infromation in MOHS Intial Application
