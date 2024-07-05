@@ -20,7 +20,7 @@ namespace MiaplazaTask.StepDefinitions
         [Given(@"Navigate to Miacademy page")]
         public void GivenNavigateToMiacademyPage()
         {
-            //open the web broweser and navigate to application
+            //Open the web broweser and navigate to application
 
             driver.Navigate().GoToUrl("https://miacademy.co/#/");
             

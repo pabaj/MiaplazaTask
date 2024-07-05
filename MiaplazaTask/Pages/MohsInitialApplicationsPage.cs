@@ -82,6 +82,7 @@ namespace MiaplazaTask.Pages
 
         public void SelectStartDate()
         {
+           //selecting a future date 
            StartDateCalenderIcon.Click();
            NextCalender.Click();
            StartingDate.Click();

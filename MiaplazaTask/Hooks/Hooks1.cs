@@ -20,7 +20,7 @@ namespace MiaplazaTask.Hooks
         [BeforeScenario(Order = 1)]
         public void FirstBeforeScenario()
         {
-            // open a browser 
+            // open a browser and maximize
             var driver = new ChromeDriver();
             ScenarioContext.Current["webDriver"] = driver;
             driver.Manage().Window.Maximize();
